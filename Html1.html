@@ -1,0 +1,111 @@
+<html>
+<head>
+    <style>
+		table{
+			border:1px solid black;
+			border-collapse: collapse;
+		}
+		th{
+			width:25%;
+			height: 50px;
+			border-collapse: collapse;
+			cursor: pointer;
+		}
+		td {
+			background-color: white;
+			border-collapse: collapse;
+		}
+		.symbol{
+			color: white;
+			background-color: grey;
+		}
+		.reset{
+			color: white;
+			background-color: green;
+		}
+		.number{
+			color: white;
+			background-color: black;
+		}
+		.result{
+			margin-left: 8px;
+		}
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .calculator {
+            width: 300px;
+            margin: 0 auto;
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+	
+        <h2>Basic Calculator</h2>
+		
+		<table style="width:100%">
+			<tr>
+				<td colspan="3">
+					<div id="cacString" class="result">0</div>
+				</td>
+				<th class = "reset" onclick = "reset()" id="rst">AC</th>
+			</tr>
+			<tr>
+				<th class = "number" onclick = "addString()" id="num1">9</th>
+				<th class = "number" onclick = "addString()" id="num2">8</th>
+				<th class = "number" onclick = "addString()" id="num3">7</th>
+				<th class = "symbol" onclick = "addString()" id="symbol1">+</th>
+			</tr>
+			<tr>
+				<th class = "number" onclick = "addString()" id="num4">6</th>
+				<th class = "number" onclick = "addString()" id="num5">5</th>
+				<th class = "number" onclick = "addString()" id="num6">4</th>
+				<th class = "symbol" onclick = "addString()" id="symbol2">-</th>
+			</tr>
+			<tr>
+				<th class = "number" onclick = "addString()" id="num7">3</th>
+				<th class = "number" onclick = "addString()" id="num8">2</th>
+				<th class = "number" onclick = "addString()" id="num9">1</th>
+				<th class = "symbol" onclick = "addString()" id="symbol3">/</th>
+			</tr>
+			<tr>
+				<th class = "number" onclick = "addString()" id="symbol4">.</th>
+				<th class = "number" onclick = "addString()" id="num10">0</th>
+				<th class = "number" onclick = "calculate()" id="symbol3">=</th>
+				<th class = "symbol" onclick = "addString()" id="symbol3">*</th>
+			</tr>
+		</table>
+		
+    </div>
+
+    <script>
+		function addString(e){
+			e = e || window.event;
+			e = e.target || e.srcElement;
+			if( document.getElementById('cacString').textContent == '0'){
+				document.getElementById('cacString').textContent = document.getElementById(e.id).textContent;
+			} else {
+				document.getElementById('cacString').textContent = document.getElementById('cacString').textContent + document.getElementById(e.id).textContent;
+			}
+		}
+		
+		function reset(e){
+			e = e || window.event;
+			e = e.target || e.srcElement;
+			document.getElementById('cacString').textContent = '0';
+		}
+		
+        function calculate() {
+		
+			let result = eval(document.getElementById('cacString').textContent);
+            document.getElementById('cacString').textContent = `${result}`;
+        }
+    </script>
+</body>
+</html>
