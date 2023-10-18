@@ -1,0 +1,38 @@
+<script>
+	 
+	function reverse(str)
+	{
+		let temp;
+		let start = 0;
+		let end = str.length-1;
+		str = str.split("");
+		
+		while (start <= end) 
+		{ 
+			temp = str[start];
+			str[start]=str[end];
+			str[end]=temp;
+			start++;
+			end--;
+		}
+
+		return str.join("");
+	}
+
+	function reverseWords(s)
+	{
+		let words;
+		words = s.split(" ");
+		let reverseString = [] ;
+
+		for(let i=0; i<words.length; i++){
+		    reverseString.push(reverse(words[i]));
+		}
+
+		return reverseString.join(" ");;
+	}
+
+	var s = "i like this program very much ";
+	document.write(reverseWords(s));
+	
+</script>
